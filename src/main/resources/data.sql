@@ -1,0 +1,2 @@
+INSERT INTO meeting (name, description, due_date, type_meeting ) VALUES ('spotkanie z zarzadem', 'spotkanie cotygodniowe', '1989-01-12', 'ROOM');
+INSERT INTO meeting (name, description, due_date, type_meeting ) VALUES ('spotkanie z inwestorem', 'nowe inwestycje', '2019-04-02', 'ONLINE');

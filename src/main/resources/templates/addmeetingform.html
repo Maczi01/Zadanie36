@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodawanie filmu</title>
+</head>
+<body>
+<h1> Dodawanie spotkania</h1>
+
+<form method="post" action="/addmeeting" th:object="${meeting}">
+
+    <input type="text" th:field="*{name}" /><br>
+    <input type="date" th:field="*{dueDate}" /><br>
+    <select th:field="*{typeMeeting}">
+        <!--<option th:each="o: ${targetAudiences}" th:value="${o.name()}" th:text="${o.name()}"></option>-->
+        <option th:each="o :  ${T(pl.mati.meetingapp.TypeMeeting).values()}" th:value="${o.name()}" th:text="${o.name()}"></option>
+    </select>
+    <input type="text" th:field="*{description}" /><br>
+    <input type="submit" value="Dodaj!">
+</form>
+
+
+
+</body>
+</html>

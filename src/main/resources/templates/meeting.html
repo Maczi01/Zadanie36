@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${meeting.name}"></h1>
+
+<p th:text="|Opis spotkania: ${meeting.description}|"></p>
+<p th:text="|Data spotkania:  ${meeting.dueDate}|"></p>
+<p th:text="|Typ spotkania:  ${meeting.typeMeeting}|"></p>
+<p th:text="|Numer w bazie:  ${meeting.id}|"></p>
+
+
+
+</body>
+</html>
