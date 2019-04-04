@@ -2,26 +2,105 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Pracownicy</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Dodawanie spotkania</title>
+    <style type="text/css">
 
+        body {
+            background: url("https://www.sogoodlanguages.com/wp-content/uploads/2015/07/Meeting.jpg");
+            background-size: cover;
+        }
+
+        .container {
+            /*padding-top: 20px;*/
+            /*background: white;*/
+            width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .forlogo {
+
+            text-align: center;
+        }
+
+        .list {
+            margin-left: 100px;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        button {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 </head>
 <body>
+<h1 class="title">Edycja spotkania</h1>
 
-<div style="margin: auto; width: 400px">
+<div class="container">
+    <div class="form-group">
+        <form action="/editmeeting" method="post" th:object="${meeting}">
+            <input name="name" class="form-control" placeholder="nazwa spotkania" th:field="*{name}"><br>
+            <input class="form-control" type="hidden" th:field="*{id}" placeholder="ID"/>
 
-    <form action="/editmeeting" method="post" th:object="${meeting}">
-        <input type="hidden" th:field="*{id}" placeholder="ID" /> <br/>
-        <input type="text" th:field="*{name}" placeholder="Nazwa spotkania" /> <br/>
-        <input type="text" th:field="*{description}" placeholder="Opis spotkania"  /> <br/>
-        <input type="date" th:field="*{dueDate}" /><br>
-        <select th:field="*{typeMeeting}">
-            <!--<option th:each="o: ${targetAudiences}" th:value="${o.name()}" th:text="${o.name()}"></option>-->
-            <option th:each="o :  ${T(pl.mati.meetingapp.TypeMeeting).values()}" th:value="${o.name()}" th:text="${o.name()}"></option>
-        </select>
-        <input type="submit" value="Zapisz" />
-    </form>
+            <div class="form-group row">
+                <label for="example-date-input" class="col-0 col-form-label"></label>
+                <div class="col-12">
+                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input"
+                           th:field="*{dueDate}">
+                </div>
+            </div>
+
+            <textarea class="form-control" name="description" placeholder="opis spotkania" rows="6"
+                      th:field="*{description}"></textarea><br>
+
+            <select class="form-control" th:field="*{typeMeeting}">
+                <option th:each="o :  ${T(pl.mati.meetingapp.TypeMeeting).values()}" th:value="${o.name()}"
+                        th:text="${o.name()}"></option>
+            </select>
+
+
+            <button class="form-control" type="submit">Zapisz zmiany</button>
+        </form>
+
+    </div>
+    <!--<div class="container">-->
+    <!--<div class="form-group">-->
+
+    <!--<div style="margin: auto; width: 400px">-->
+
+    <!--<form action="/editmeeting" method="post" th:object="${meeting}">-->
+    <!--<input class="form-control" type="hidden" th:field="*{id}" placeholder="ID" /> <br/>-->
+    <!--<input class="form-control" type="text" th:field="*{name}" placeholder="Nazwa spotkania" /> <br/>-->
+    <!--<input class="form-control" type="text" th:field="*{description}" placeholder="Opis spotkania"  /> <br/>-->
+    <!--<div class="col-12">-->
+    <!--<input class="form-control" type="date" value="2011-08-19" id="example-date-input" th:field="*{dueDate}">-->
+    <!--</div>-->
+    <!--<select class="form-control" th:field="*{typeMeeting}">-->
+    <!--<option th:each="o :  ${T(pl.mati.meetingapp.TypeMeeting).values()}" th:value="${o.name()}" th:text="${o.name()}"></option>-->
+    <!--</select>-->
+    <!--<button class="form-control"  type="submit">Zapisz zmiany</button>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--<form action="/">-->
+    <!--<div  class="col text-center">-->
+    <!--<button class="btn btn-primary">Wróć do strony głównej</button>-->
+    <!--</div>-->
+    <!--</form>-->
+    <!--</div>-->
 </div>
 
 </body>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wszystkie spotkania</title>
+</head>
+<body>
+<h1> Lista spotkań</h1>
+
+<ul>
+    <li th:each="meeting: ${onlinemeeting}">
+        <a th:href="'/meeting/' +${meeting.id}" th:text="${meeting.name}"></a>
+    </li>
+</ul>
+</body>
+</html>

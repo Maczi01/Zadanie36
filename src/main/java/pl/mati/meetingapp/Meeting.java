@@ -22,6 +22,9 @@ public class Meeting {
     @Enumerated(EnumType.STRING)
     private TypeMeeting typeMeeting;
 
+    private String urlImage;
+
+
     public Long getId() {
         return id;
     }

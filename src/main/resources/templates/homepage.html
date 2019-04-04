@@ -1,17 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Wszystkie spotkania</title>
+    <style type="text/css">
+        body {
+            background: url("https://www.sogoodlanguages.com/wp-content/uploads/2015/07/Meeting.jpg");
+            background-size: cover;
+        }
+        h1{
+            margin-top: 50px;
+            text-align: center;
+        }
+        .forcategories{
+            /*float: left;*/
+            list-style-type: none;
+            margin-left: 300px;
+            margin-right: 300px;
+
+        }
+        .foradd{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .forlogo {
+
+            text-align: center;
+        }
+
+        .list {
+            margin-left: 100px;
+        }
+        .header{
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+        }
+        button{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .container {
+            padding-top: 20px;
+            /*background: white;*/
+            width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
 </head>
 <body>
-<h1> Lista spotkań</h1>
+<h1 class="title">Lista najbliższych spotkań</h1>
 
-<a href="/addmeeting">Dodaj spotkanie</a>
-<ul>
-    <li th:each="meeting: ${allmeetings}">
+<div class="foradd">
+    <form action="/addmeeting">
+        <div class="col text-center">
+            <button class="btn btn-primary">Dodaj spotkanie</button>
+        </div>
+    </form>
+</div>
+<div class="forcategories">
+<ul class="list-group list-group-flush">
+    <li class="list-group-item" th:each="meeting: ${allmeetings}">
         <a th:href="'/meeting/' +${meeting.id}" th:text="${meeting.name}"></a>
     </li>
 </ul>
+</div>
+
+
+
+
+
+
+<!--<p> Pokaż spotkania po kategorii:</p>-->
+<!--<a href="/online">Online</a>-->
+
 </body>
 </html>

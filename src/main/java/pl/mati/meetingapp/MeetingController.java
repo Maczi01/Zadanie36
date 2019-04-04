@@ -73,5 +73,12 @@ public class MeetingController {
         meetingRepository.save(meeting);
         return "redirect:/";
     }
-    
+
+    @GetMapping("/online")
+    public String onlineMeetngs(Model model){
+        List<Meeting> allmeetngs = meetingRepository.findOnlineMeeting();
+        model.addAttribute("onlinemeetings", allmeetngs);
+        return "onlinemeeting";
+    }
+
 }
