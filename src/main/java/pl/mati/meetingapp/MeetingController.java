@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +50,28 @@ public class MeetingController {
           return "redirect:/";
     }
 
+    @GetMapping("/deletemeeting/{id}")
+    public String deleteMeeting(@PathVariable Long id){
+        meetingRepository.deleteById(id);
+        return "redirect:/";
+    }
 
+    @GetMapping("/editmeeting/{id}")
+    public String editMeeting(@PathVariable Long id, Model model){
+        Optional<Meeting> optional = meetingRepository.findById(id);
+        if(optional.isPresent()){
+            Meeting meeting = optional.get();
+            model.addAttribute("meeting", meeting);
+            return "editmeeting";
+        }else {
+            return "redirect:/";
+        }
+    }
 
-
+    @PostMapping("/editmeeting")
+    public String edit(Meeting meeting) {
+        meetingRepository.save(meeting);
+        return "redirect:/";
+    }
+    
 }

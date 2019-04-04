@@ -12,7 +12,8 @@
 <p th:text="|Typ spotkania:  ${meeting.typeMeeting}|"></p>
 <p th:text="|Numer w bazie:  ${meeting.id}|"></p>
 
-
+<p><a th:href="'/editmeeting/' + ${meeting.id}">Edytuj spotkanie</a></p>
+<p><a th:href="'/deletemeeting/' + ${meeting.id}">Usuń spotkanie z listy</a></p>
 
 </body>
 </html>

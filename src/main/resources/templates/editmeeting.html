@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pracownicy</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div style="margin: auto; width: 400px">
+
+    <form action="/editmeeting" method="post" th:object="${meeting}">
+        <input type="hidden" th:field="*{id}" placeholder="ID" /> <br/>
+        <input type="text" th:field="*{name}" placeholder="Nazwa spotkania" /> <br/>
+        <input type="text" th:field="*{description}" placeholder="Opis spotkania"  /> <br/>
+        <input type="date" th:field="*{dueDate}" /><br>
+        <select th:field="*{typeMeeting}">
+            <!--<option th:each="o: ${targetAudiences}" th:value="${o.name()}" th:text="${o.name()}"></option>-->
+            <option th:each="o :  ${T(pl.mati.meetingapp.TypeMeeting).values()}" th:value="${o.name()}" th:text="${o.name()}"></option>
+        </select>
+        <input type="submit" value="Zapisz" />
+    </form>
+</div>
+
+</body>
+</html>
